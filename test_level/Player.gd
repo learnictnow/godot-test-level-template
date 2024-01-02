@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+@export var spawn_point:Marker3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -7,6 +8,8 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+func _ready():
+	global_position = spawn_point.global_position
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -29,3 +32,7 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+func respawn():
+	velocity = Vector3.ZERO
+	global_position = spawn_point.global_position
