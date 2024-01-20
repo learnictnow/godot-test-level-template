@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://dowvk531n4y5x"]
+[gd_scene load_steps=28 format=3 uid="uid://dowvk531n4y5x"]
 
 [ext_resource type="Script" path="res://test_level/RespawnArea.gd" id="1_l3d50"]
 [ext_resource type="PackedScene" uid="uid://c4dyfiufsjalg" path="res://test_level/Player.tscn" id="2_lj6sm"]
+[ext_resource type="PackedScene" uid="uid://b13qv3318w6fm" path="res://general/WinPoint.tscn" id="3_va26s"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_m2n6p"]
 size = Vector3(2, 1, 2)
@@ -370,5 +371,8 @@ spawn_point = NodePath("../SpawnPoints/Spawn1")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 29, 0)
+
+[node name="WinPoint" parent="." instance=ExtResource("3_va26s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32083, 1.95294, -10.0086)
 
 [connection signal="body_entered" from="RespawnArea/MeshInstance3D/Area3D" to="RespawnArea" method="_on_area_3d_body_entered"]
